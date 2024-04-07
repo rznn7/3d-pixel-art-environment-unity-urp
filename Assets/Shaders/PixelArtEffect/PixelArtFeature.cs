@@ -17,6 +17,10 @@ public class PixelArtFeature : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (renderingData.cameraData.cameraType == CameraType.SceneView)
+            {
+                return;
+            }
             var cmd = CommandBufferPool.Get("PixelArtEffect");
 
             var cameraColorTarget = renderingData.cameraData.renderer.cameraColorTarget;
